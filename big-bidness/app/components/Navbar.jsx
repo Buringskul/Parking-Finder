@@ -10,13 +10,15 @@ export const Navbar = () => {
 
     return (
     <div className='bg-white'>
-            <div className='max-w-7xl h-16 flex mx-auto px-4 justify-between items-center lg:px-8'>
+            <div className='max-w-7xl h-16 flex mx-auto px-3 justify-between items-center shadow lg:px-8'>
+                <a href="/">Big Bidness</a>
                 <div className="hidden md:inline-block">
                     <div className="space-x-4">
-                        <a href="/" className="text-black hover:bg-black hover:text-white rounded-xl p-2">Home</a>
-                        <a href="/" className="text-black hover:bg-black hover:text-white rounded-xl p-2">Experience</a>
-                        <a href="/" className="text-black hover:bg-black hover:text-white rounded-xl p-2 ">About</a>
-                        <a href="/" className="text-black hover:bg-black hover:text-white rounded-xl p-2">Contact</a>
+                        <a href="/" className="text-black bg-gray-100 hover:bg-black hover:text-white rounded-md px-1 py-1">Create Listing</a>
+                        <a href="/" className="text-black hover:bg-black hover:text-white rounded-md px-1 py-1">Activity</a>
+                        <a href="/" className="text-black hover:bg-black hover:text-white rounded-md px-1 py-1 ">Settings</a>
+                        <a href="/" className="text-black bg-neutral-300 border border-slate-500 hover:bg-black hover:text-white rounded-md px-3 py-1">Sign In</a>
+                        <a href="/" className="text-white bg-zinc-800 border border-slate-500 hover:bg-gray-500 hover:text-white rounded-md px-2 py-1">Register</a>
                     </div>
                 </div>
                 <div className='md:hidden flex items-center'>
