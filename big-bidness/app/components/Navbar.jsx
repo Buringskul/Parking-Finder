@@ -17,8 +17,8 @@ export const Navbar = () => {
                         <a href="/" className="text-black bg-gray-100 hover:bg-black hover:text-white rounded-md px-1 py-1">Create Listing</a>
                         <a href="/" className="text-black hover:bg-black hover:text-white rounded-md px-1 py-1">Activity</a>
                         <a href="/" className="text-black hover:bg-black hover:text-white rounded-md px-1 py-1 ">Settings</a>
-                        <a href="/" className="text-black bg-neutral-300 border border-slate-500 hover:bg-black hover:text-white rounded-md px-3 py-1">Sign In</a>
-                        <a href="/" className="text-white bg-zinc-800 border border-slate-500 hover:bg-gray-500 hover:text-white rounded-md px-2 py-1">Register</a>
+                        <a href="/" className="text-black bg-neutral-300 border border-slate-500 hover:bg-zinc-800 hover:text-white rounded-md px-3 py-1">Sign In</a>
+                        <a href="/" className="text-white bg-zinc-800 border border-slate-500 hover:bg-neutral-300 hover:text-black rounded-md px-2 py-1">Register</a>
                     </div>
                 </div>
                 <div className='md:hidden flex items-center'>
