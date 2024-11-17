@@ -1,7 +1,6 @@
 'use client'
 import { useState, React } from 'react';
 
-
 export const Navbar = () => {
     const [isToggle, setIsToggle] = useState(false);
     function toggleNav() {
@@ -10,8 +9,7 @@ export const Navbar = () => {
 
     return (
     <div className='bg-white'>
-            {/* Make navbar full width by using w-full */}
-            <div className='w-full h-16 flex mx-auto px-3 justify-between items-center shadow-black shadow-lg lg:px-8'>
+            <div className='w-full h-16 flex mx-auto px-3 py-4 justify-between items-center shadow-black shadow-lg lg:px-8 border-b border-gray-300'>
                 <a href="/">Big Bidness</a>
                 <div className="hidden md:inline-block">
                     <div className="space-x-4">
