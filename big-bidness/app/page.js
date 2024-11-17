@@ -10,7 +10,7 @@ export default function Home() {
     <div>
       <Hero/>
       <Search searchInput={searchInput} setSearchInput={setSearchInput}/>
-      <Listings />
+      <Listings searchInput={searchInput} />
     </div>
   );
 }

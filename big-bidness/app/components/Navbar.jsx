@@ -10,7 +10,8 @@ export const Navbar = () => {
 
     return (
     <div className='bg-white'>
-            <div className='max-w-7xl h-16 flex mx-auto px-3 justify-between items-center shadow-black shadow-lg lg:px-8'>
+            {/* Make navbar full width by using w-full */}
+            <div className='w-full h-16 flex mx-auto px-3 justify-between items-center shadow-black shadow-lg lg:px-8'>
                 <a href="/">Big Bidness</a>
                 <div className="hidden md:inline-block">
                     <div className="space-x-4">
