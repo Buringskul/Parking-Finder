@@ -1,18 +1,18 @@
-import React from 'react'
-import { Card, CardHeader, CardBody, CardFooter, Typography, Button } from '@material-tailwind/react';
+import React from 'react';
+import { Card, CardBody, CardFooter, Typography, Button } from '@material-tailwind/react';
 
 export const Item = ({ data }) => {
   return (
     <a href={data.productUrl} className="block cursor-pointer">
       <Card className="mt-6 w-90 m-1 border border-gray-300 rounded-lg shadow-md">
-        <CardHeader color="blue-gray" className="relative h-56">
+        <div className="relative h-56 overflow-hidden rounded-t-lg">
           <img 
-            src={data.image} 
             alt="Product" 
-            className="w-full h-full object-cover rounded-t-lg" 
+            className="w-full h-full object-cover" 
+            src={data.image} 
           />
-        </CardHeader>
-        <CardBody className="p-4">
+        </div>
+        <CardBody className="p-6">
           <Typography variant="h5" color="blue-gray" className="mb-2">
             {data.name}
           </Typography>
@@ -31,4 +31,4 @@ export const Item = ({ data }) => {
       </Card>
     </a>
   );
-}
+};
