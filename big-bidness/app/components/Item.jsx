@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card, CardBody, CardFooter, Typography, Button } from '@material-tailwind/react';
+import Link from 'next/link';
 
 export const Item = ({ data }) => {
   return (
-    <a href={data.productUrl} className="block cursor-pointer">
+    <Link href={`/itemPage/${encodeURIComponent(data.name)}`} className="block cursor-pointer">
       <Card className="mt-6 w-90 m-1 border border-gray-300 rounded-lg shadow-md">
         <div className="relative h-56 overflow-hidden rounded-t-lg">
           <img 
@@ -12,7 +13,7 @@ export const Item = ({ data }) => {
             src={data.image} 
           />
         </div>
-        <CardBody className="p-6">
+        <CardBody className="p-6 flex flex-col"> {/* Added flex-col to stack text vertically */}
           <Typography variant="h5" color="blue-gray" className="mb-2">
             {data.name}
           </Typography>
@@ -29,6 +30,6 @@ export const Item = ({ data }) => {
           </Button>
         </CardFooter>
       </Card>
-    </a>
+    </Link>
   );
 };
