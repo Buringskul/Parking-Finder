@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const Item = ({ data }) => {
   return (
-    <Link href={`/itemPage/${encodeURIComponent(data.name)}`} className="block cursor-pointer">
+    <Link href={`/itemPage/${data.id}`} className="block cursor-pointer">
       <Card className="mt-6 w-90 m-1 border border-gray-300 rounded-lg shadow-md">
         <div className="relative h-56 overflow-hidden rounded-t-lg">
           <img 
