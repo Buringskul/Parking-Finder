@@ -13,13 +13,10 @@ export const Navbar = () => {
     <div className="bg-white">
       <div className="w-full h-16 flex mx-auto px-3 py-4 justify-between items-center shadow-black shadow-lg lg:px-8 border-b border-gray-300">
         <Link href="/" className="text-xl font-bold">
-          Big Bidness
+          Parking Finder
         </Link>
         <div className="hidden md:inline-block">
           <div className="space-x-4">
-            <Link href="/create-listing" className="text-black bg-gray-100 hover:bg-black hover:text-white rounded-md px-1 py-1">
-              Create Listing
-            </Link>
             <Link href="/activity" className="text-black hover:bg-black hover:text-white rounded-md px-1 py-1">
               Activity
             </Link>
