@@ -1,69 +1,60 @@
-import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 import { useEffect, useState } from 'react';
-
-const libraries = ['places']; // Needed for Places API to search nearby locations
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet'; // Import Leaflet for marker handling
+import 'leaflet/dist/leaflet.css'; // Leaflet CSS for styling
 
 export function Map() {
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY, // Add your API key here
-    libraries,
-  });
-
-  const [map, setMap] = useState(null);
+  const [currentLocation, setCurrentLocation] = useState({ lat: 40.7128, lng: -74.0060 }); // Default to NYC
   const [markers, setMarkers] = useState([]);
 
-  // Set default location to New York City
-  const defaultLocation = { lat: 40.7128, lng: -74.0060 };
-  const [currentLocation, setCurrentLocation] = useState(defaultLocation);
-
-  // Fetch nearby parking spots
+  // Fetch user's current location and update map center
   const fetchNearbyParking = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         const { latitude, longitude } = position.coords;
         setCurrentLocation({ lat: latitude, lng: longitude });
-        searchNearbyParking(latitude, longitude);
+        searchNearbyParking(latitude, longitude); // Fetch nearby parking spots
       });
     }
   };
 
+  // Placeholder function for fetching nearby parking
   const searchNearbyParking = (lat, lng) => {
-    if (map) {
-      const service = new window.google.maps.places.PlacesService(map);
-      const request = {
-        location: { lat, lng },
-        radius: 5000, // Adjust the radius as needed
-        type: ['parking'],
-      };
-
-      service.nearbySearch(request, (results, status) => {
-        if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-          setMarkers(results.map(place => ({
-            lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng(),
-            title: place.name,
-          })));
-        }
-      });
-    }
+    // In a real application, use an API to get nearby parking data
+    // Example of mock data for parking spots
+    const mockParkingData = [
+      { lat: lat + 0.01, lng: lng + 0.01, title: 'Parking Spot 1' },
+      { lat: lat - 0.01, lng: lng - 0.01, title: 'Parking Spot 2' },
+    ];
+    setMarkers(mockParkingData); // Set parking markers based on fetched data
   };
 
   useEffect(() => {
-    fetchNearbyParking(); // Call on component mount to set up map and fetch parking spots
-  }, [map]);
-
-  if (!isLoaded) return <div>Loading...</div>;
+    fetchNearbyParking(); // Fetch parking on component mount
+  }, []);
 
   return (
-    <GoogleMap
-      zoom={12}
+    <MapContainer
       center={currentLocation}
-      mapContainerStyle={{ width: '100%', height: '400px' }}
-      onLoad={map => setMap(map)}
+      zoom={13}
+      style={{ width: '100%', height: '100vh' }} // Set map height to full viewport height
     >
+      {/* Use OpenStreetMap tiles */}
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      />
+      
+      {/* Add markers for nearby parking spots */}
       {markers.map((marker, index) => (
-        <Marker key={index} position={{ lat: marker.lat, lng: marker.lng }} title={marker.title} />
+        <Marker
+          key={index}
+          position={{ lat: marker.lat, lng: marker.lng }}
+          icon={new L.Icon({ iconUrl: 'https://example.com/marker-icon.png' })} // Custom marker icon (optional)
+        >
+          <Popup>{marker.title}</Popup>
+        </Marker>
       ))}
-    </GoogleMap>
+    </MapContainer>
   );
 }
